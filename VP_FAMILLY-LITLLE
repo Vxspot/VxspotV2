@@ -142,6 +142,12 @@ if not isRoblox then
     error("Error: No tienes permiso para ver este contenido.")
 end
 
+local isRoblox = pcall(function() return game and game:HttpGet("") end)
+
+if not isRoblox then
+    error("Error: No tienes permiso para ver este contenido.")
+end
+
 local success, result = pcall(function() return game:HttpGet("") end)
 if not success then
     error("Error: No tienes permiso para ver este contenido.")
