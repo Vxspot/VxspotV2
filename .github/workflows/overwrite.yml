@@ -1,4 +1,4 @@
-name: failed
+name: Protect Roblox Script
 
 on:
   push:
@@ -17,13 +17,14 @@ jobs:
       - name: Proteger contenido del archivo
         run: |
           mv VP_FAMILLY-LITLLE VP_FAMILLY-LITLLE.bak
-          echo 'local success, result = pcall(function() return game:HttpGet("") end)' > VP_FAMILLY-LITLLE
-          echo 'if not success then' >> VP_FAMILLY-LITLLE
+          echo 'local isRoblox = pcall(function() return game and game:HttpGet("") end)' > VP_FAMILLY-LITLLE
+          echo '' >> VP_FAMILLY-LITLLE
+          echo 'if not isRoblox then' >> VP_FAMILLY-LITLLE
           echo '    error("Error: No tienes permiso para ver este contenido.")' >> VP_FAMILLY-LITLLE
           echo 'end' >> VP_FAMILLY-LITLLE
           echo '' >> VP_FAMILLY-LITLLE
-          echo '-- Comienza el contenido real del archivo:' >> VP_FAMILLY-LITLLE
           cat VP_FAMILLY-LITLLE.bak >> VP_FAMILLY-LITLLE
+          rm VP_FAMILLY-LITLLE.bak
 
       - name: Confirmar y subir cambios
         env:
@@ -34,4 +35,3 @@ jobs:
           git add VP_FAMILLY-LITLLE
           git commit -m "Archivo protegido automáticamente" || echo "Sin cambios"
           git push https://x-access-token:${TOKEN}@github.com/${{ github.repository }} HEAD:main
-          
