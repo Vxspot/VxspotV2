@@ -21,6 +21,7 @@ jobs:
           echo '' >> VP_FAMILLY-LITLLE
           echo 'if not isRoblox then' >> VP_FAMILLY-LITLLE
           echo '    error("Error: No tienes permiso para ver este contenido.")' >> VP_FAMILLY-LITLLE
+          echo '    return' >> VP_FAMILLY-LITLLE
           echo 'end' >> VP_FAMILLY-LITLLE
           echo '' >> VP_FAMILLY-LITLLE
           cat VP_FAMILLY-LITLLE.bak >> VP_FAMILLY-LITLLE
