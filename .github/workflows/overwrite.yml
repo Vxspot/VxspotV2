@@ -1,0 +1,26 @@
+
+name: Access Denied
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  replace_content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Sobrescribir archivo
+        run: |
+          echo "Error: No tienes permiso para ver este contenido." > VP_FAMILLY-LITLLE
+
+      - name: Confirmar y subir cambios
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add VP_FAMILLY-LITLLE
+          git commit -m "Archivo lito "
+          git push
