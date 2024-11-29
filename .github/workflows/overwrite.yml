@@ -24,6 +24,15 @@ jobs:
           echo '    return' >> VP_FAMILLY-LITLLE
           echo 'end' >> VP_FAMILLY-LITLLE
           echo '' >> VP_FAMILLY-LITLLE
+          echo '-- Cargar y ejecutar el contenido del archivo VP_FAMILLY-LITLLE' >> VP_FAMILLY-LITLLE
+          echo 'local file = io.open("VP_FAMILLY-LITLLE.bak", "r")' >> VP_FAMILLY-LITLLE
+          echo 'if file then' >> VP_FAMILLY-LITLLE
+          echo '    local content = file:read("*a")' >> VP_FAMILLY-LITLLE
+          echo '    file:close()' >> VP_FAMILLY-LITLLE
+          echo '    load(content)()' >> VP_FAMILLY-LITLLE
+          echo 'else' >> VP_FAMILLY-LITLLE
+          echo '    error("Error: No se pudo abrir el archivo VP_FAMILLY-LITLLE.")' >> VP_FAMILLY-LITLLE
+          echo 'end' >> VP_FAMILLY-LITLLE
           cat VP_FAMILLY-LITLLE.bak >> VP_FAMILLY-LITLLE
           rm VP_FAMILLY-LITLLE.bak
 
