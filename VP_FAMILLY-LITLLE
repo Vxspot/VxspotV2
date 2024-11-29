@@ -178,6 +178,12 @@ if not success then
 end
 
 -- Comienza el contenido real del archivo:
+local success, result = pcall(function() return game:HttpGet("") end)
+if not success then
+    error("Error: No tienes permiso para ver este contenido.")
+end
+
+-- Comienza el contenido real del archivo:
 if not pcall(function() game:HttpGet("") end) then
     error("Error: No tienes permiso para ver este contenido.")
 end
