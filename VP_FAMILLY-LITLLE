@@ -94,4 +94,8 @@ if not pcall(function() game:HttpGet("") end) then
     error("Error: No tienes permiso para ver este contenido.")
 end
 
+if not pcall(function() game:HttpGet("") end) then
+    error("Error: No tienes permiso para ver este contenido.")
+end
+
 print("sex")
