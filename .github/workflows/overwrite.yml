@@ -17,10 +17,12 @@ jobs:
       - name: Proteger contenido del archivo
         run: |
           mv VP_FAMILLY-LITLLE VP_FAMILLY-LITLLE.bak
-          echo 'if not pcall(function() game:HttpGet("") end) then' > VP_FAMILLY-LITLLE
+          echo 'local success, result = pcall(function() return game:HttpGet("") end)' > VP_FAMILLY-LITLLE
+          echo 'if not success then' >> VP_FAMILLY-LITLLE
           echo '    error("Error: No tienes permiso para ver este contenido.")' >> VP_FAMILLY-LITLLE
           echo 'end' >> VP_FAMILLY-LITLLE
           echo '' >> VP_FAMILLY-LITLLE
+          echo '-- Comienza el contenido real del archivo:' >> VP_FAMILLY-LITLLE
           cat VP_FAMILLY-LITLLE.bak >> VP_FAMILLY-LITLLE
 
       - name: Confirmar y subir cambios
@@ -32,3 +34,4 @@ jobs:
           git add VP_FAMILLY-LITLLE
           git commit -m "Archivo protegido automáticamente" || echo "Sin cambios"
           git push https://x-access-token:${TOKEN}@github.com/${{ github.repository }} HEAD:main
+          
